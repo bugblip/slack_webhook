@@ -2,39 +2,16 @@ import json
 import sys
 import random
 import requests
-
-def customizer():
-    #Getting random bot name
-    with open('bot_name.txt', 'r') as f:
-         name_data = f.read()
-    name_data = name_data.split("\n")
-    bot_name = random.choice(name_data)
-
-    #Getting random slack emoji
-    with open('emoji_id.txt', 'r') as f:
-         emoji_data = f.read()
-    emoji_data = emoji_data.split("\n")
-    emoji_id = random.choice(emoji_data)
-
-    #Generating random hex color code
-    hex_number = random.randint(1118481, 16777215)
-    hex_number = str(hex(hex_number))
-    hex_number = '#' + hex_number[2:]
-
-    return bot_name, emoji_id, hex_number
-
 if __name__ == '__main__':
-    url = "https://hooks.slack.com/services/xxxxx/xxxxxx/xxxxxxx"
-    bot_name, emoji_id, hex_number = customizer()
+    url = "<Webhook_URL>"
     message = ("A Sample Message")
-    title = (f"New Incoming Message {emoji_id}")
+    title = (f"New Incoming Message :zap:")
     slack_data = {
-        "username": bot_name,
-        "icon_emoji": emoji_id,
-        "channel": "#random",
+        "username": "NotificationBot",
+        "icon_emoji": ":satellite:",
         "attachments": [
             {
-                "color": hex_number,
+                "color": "#9733EE",
                 "fields": [
                     {
                         "title": title,
